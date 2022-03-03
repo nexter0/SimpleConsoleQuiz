@@ -25,10 +25,10 @@ int run()
 	{
 		setColour(clLime);
 		std::cout << "Gotowe!\n\n";
-		std::cout << "Za³adowano " << questions->questionsCount() << " " << checkPlural(questions->questionsCount(), "pytanie", "pytania", "pytañ") << "\n\n";
+		std::cout << "ZaÂ³adowano " << questions->questionsCount() << " " << checkPlural(questions->questionsCount(), "pytanie", "pytania", "pytaÃ±") << "\n\n";
 		setColour(clYellow);
-		printColoured(clDarkYellow, "Zasady s¹ proste.\n ");
-		std::cout << "> Masz 3 szanse i twoim celem jest zdobycie jak najwiêkszej liczby punktów.\n > Za pytania mo¿esz otrzymaæ 1, 2 lub 3 punkty. Odpowiadaj¹c poprawnie, zdobywasz seriê.\n > 5 poprawnych odpowiedzi daje Ci dodatkow¹ szansê.\n\n";
+		printColoured(clDarkYellow, "Zasady sÂ¹ proste.\n ");
+		std::cout << "> Masz 3 szanse i twoim celem jest zdobycie jak najwiÃªkszej liczby punktÃ³w.\n > Za pytania moÂ¿esz otrzymaÃ¦ 1, 2 lub 3 punkty. OdpowiadajÂ¹c poprawnie, zdobywasz seriÃª.\n > 5 poprawnych odpowiedzi daje Ci dodatkowÂ¹ szansÃª.\n\n";
 		resetColour();
 		wait();
 		system("cls");
@@ -46,7 +46,7 @@ int run()
 				if (toupper(plAnswer.at(0)) != 'A' && toupper(plAnswer.at(0)) != 'B' && toupper(plAnswer.at(0)) != 'C' && toupper(plAnswer.at(0)) != 'D' || plAnswer.length() != 1)
 				{
 					// INVALID ANSWER
-					printColoured(clPink, "Niepoprawny wybór. Spróbuj ponownie.\n");
+					printColoured(clPink, "Niepoprawny wybÃ³r. SprÃ³buj ponownie.\n");
 					std::cout << " > ";
 					std::cin >> plAnswer;
 				}
@@ -55,9 +55,9 @@ int run()
 					// CORRECT ANSWER
 					int newPoints = details->value + details->value * stats->streak;
 
-					printColoured(clLime, "Poprawna odpowiedŸ!\n");
+					printColoured(clLime, "Poprawna odpowiedÅ¸!\n");
 					setColour(clGreen);
-					std::cout << "Otrzymujesz " << newPoints << " " << checkPlural(newPoints, "punkt", "punkty", "punktów") << ".\n";
+					std::cout << "Otrzymujesz " << newPoints << " " << checkPlural(newPoints, "punkt", "punkty", "punktÃ³w") << ".\n";
 					resetColour();
 					stats->score += newPoints;
 					stats->streak++;
@@ -67,7 +67,7 @@ int run()
 					{
 						if (stats->lives < 5)
 						{
-							printColoured(clCyan, "\nŒwietnie! Zdobywasz dodatkow¹ szansê!\n");
+							printColoured(clCyan, "\nÅ’wietnie! Zdobywasz dodatkowÂ¹ szansÃª!\n");
 							stats->lives++;
 						}
 						else
@@ -75,7 +75,7 @@ int run()
 							int newPoints = 3 * stats->streak;
 
 							setColour(clCyan);
-							std::cout << "\nMasz ju¿ maksymaln¹ iloœæ szans, wiêc otrzymujesz dodatkowo " << newPoints << " " << checkPlural(newPoints, "punkt", "punkty", "punktów") << "\n";
+							std::cout << "\nMasz juÂ¿ maksymalnÂ¹ iloÅ“Ã¦ szans, wiÃªc otrzymujesz dodatkowo " << newPoints << " " << checkPlural(newPoints, "punkt", "punkty", "punktÃ³w") << "\n";
 							resetColour();
 							stats->score += newPoints;
 						}
@@ -88,8 +88,8 @@ int run()
 				else
 				{
 					// WRONG ANSWER
-					printColoured(clRed, "Z³a odpowiedŸ...\n");
-					printColoured(clYellow, "Poprawn¹ odpowiedzi¹ by³o ");
+					printColoured(clRed, "ZÂ³a odpowiedÅ¸...\n");
+					printColoured(clYellow, "PoprawnÂ¹ odpowiedziÂ¹ byÂ³o ");
 					printColoured(clGreen, std::string(1, details->correctAnswer));
 					std::cout << "\n";
 
@@ -119,7 +119,7 @@ int run()
 	displayStats(*questions, stats->lives, stats->score, stats->streak);
 
 	if (stats->lives == 0) printColoured(clPurple, "Koniec szans. Tak czy siak, dobra robota!\n");
-	else printColoured(clPink, "Skoñczy³y siê pytania. Dobra robota!\n");
+	else printColoured(clPink, "SkoÃ±czyÂ³y siÃª pytania. Dobra robota!\n");
 
 	if (TotalScore::saveQuery()) currentScore->saveScore();
 	else goto DELETE_SECTION;
@@ -156,7 +156,7 @@ int run()
 
 			if (loadedScore.getScore() >= highScore->getScore())
 			{
-				if (highScore != nullptr && highScore != TotalScore::empty)
+				if ((highScore != nullptr) && (highScore != TotalScore::empty))
 				{
 					delete highScore;
 				}
